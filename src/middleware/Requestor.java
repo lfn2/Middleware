@@ -9,7 +9,7 @@ public class Requestor {
 		ClientRequestHandler requestHandler = new ClientRequestHandler(hostName, port);			
 		Message message = new Message(remoteObject, operation, parameters);		
 		
-		Message response = (Message) Marshaller.unmarshall(requestHandler.sendAndReceive(Marshaller.marshall(message)));		
+		Message response = (Message) Marshaller.unmarshall(requestHandler.sendWithResponse(Marshaller.marshall(message)));		
 		
 		return response.getResult();		
 	}
