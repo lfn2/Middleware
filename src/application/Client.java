@@ -3,8 +3,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import middleware.ClientRequestHandler;
-import middleware.Marshaller;
+import middleware.client.ClientRequestHandler;
+import middleware.client.EchoProxy;
+import middleware.common.Marshaller;
 
 public class Client {
 
@@ -15,21 +16,17 @@ public class Client {
 		String hostname = args.length == 2 ? args[0] : DEFAULT_HOSTNAME;
 		int port = args.length == 2 ? Integer.parseInt(args[1]) : DEFAULT_PORT;
 		String input = "";
-		byte[] messageToSend;
-		byte[] messageReceived;
 		String echoedMessage;
+		EchoProxy echoProxy = new EchoProxy(hostname, port, "echo");
 		
 		try (
-			ClientRequestHandler requestHandler = new ClientRequestHandler(hostname, port);
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		) {
 			while (input != null) {	
 				System.out.println("Type your message to be echoed: ");
 				input = in.readLine();
 				if (input != null) {
-					messageToSend = Marshaller.marshall(input);
-					messageReceived = requestHandler.sendWithResponse(messageToSend);
-					echoedMessage = (String) Marshaller.unmarshall(messageReceived);
+					echoedMessage = echoProxy.echo(input);
 					System.out.println("Echo: " +echoedMessage);
 				}				
 			}

@@ -1,4 +1,4 @@
-package middleware;
+package middleware.client;
 import java.io.Closeable;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

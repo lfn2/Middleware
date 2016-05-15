@@ -1,7 +1,10 @@
-package middleware;
+package middleware.client;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
+
+import middleware.common.Marshaller;
+import middleware.common.Message;
 
 public class Requestor {
 
@@ -9,8 +12,6 @@ public class Requestor {
 		ClientRequestHandler requestHandler = new ClientRequestHandler(hostName, port);			
 		Message message = new Message(remoteObject, operation, parameters);		
 		
-		Message response = (Message) Marshaller.unmarshall(requestHandler.sendWithResponse(Marshaller.marshall(message)));		
-		
-		return response.getResult();		
+		return Marshaller.unmarshall(requestHandler.sendWithResponse(Marshaller.marshall(message)));
 	}
 }
