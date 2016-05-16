@@ -3,9 +3,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import middleware.client.ClientRequestHandler;
-import middleware.client.EchoProxy;
-import middleware.common.Marshaller;
+import distribution.EchoProxy;
+import distribution.Marshaller;
+import infrastructure.ClientRequestHandler;
 
 public class Client {
 

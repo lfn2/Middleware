@@ -1,4 +1,4 @@
-package middleware.server;
+package infrastructure;
 import java.io.Closeable;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

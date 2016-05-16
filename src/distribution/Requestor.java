@@ -1,10 +1,9 @@
-package middleware.client;
+package distribution;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
 
-import middleware.common.Marshaller;
-import middleware.common.Message;
+import infrastructure.ClientRequestHandler;
 
 public class Requestor {
 

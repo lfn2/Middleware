@@ -1,7 +1,8 @@
 package application;
 import java.io.IOException;
-import middleware.server.EchoInvoker;
-import middleware.server.ServerRequestHandler;
+
+import distribution.StringOperatorInvoker;
+import infrastructure.ServerRequestHandler;
 
 public class Server {
 	
@@ -9,7 +10,7 @@ public class Server {
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		int port = args.length == 1 ? Integer.parseInt(args[0]) : DEFAULT_PORT;
-		EchoInvoker invoker = new EchoInvoker();
+		StringOperatorInvoker invoker = new StringOperatorInvoker();
 		invoker.invoke(port);
 	}
 

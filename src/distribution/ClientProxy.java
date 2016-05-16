@@ -1,4 +1,4 @@
-package middleware.client;
+package distribution;
 
 import java.io.Serializable;
 
