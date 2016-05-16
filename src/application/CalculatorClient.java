@@ -2,6 +2,7 @@ package application;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.UnknownHostException;
 
 import commonServices.naming.NamingProxy;
 import distribution.CalculatorProxy;
@@ -13,13 +14,14 @@ public class CalculatorClient {
 	private static final String NAMING_SERVICE_HOST = "localhost";
 	private static final int NAMING_SERVICE_PORT = 1313;
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UnknownHostException, ClassNotFoundException, IOException {
 		String hostname = args.length == 2 ? args[0] : DEFAULT_HOSTNAME;
 		int port = args.length == 2 ? Integer.parseInt(args[1]) : DEFAULT_PORT;
 		String input = "";
 		float a, b, result = 0;
 		
 		NamingProxy namingService = new NamingProxy(NAMING_SERVICE_HOST, NAMING_SERVICE_PORT);			
+		CalculatorProxy	calculatorProxy = (CalculatorProxy) namingService.lookup("Calculator");
 		
 		System.out.println("Welcome to Middleware Calculator!");
 		
@@ -27,7 +29,7 @@ public class CalculatorClient {
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		) {
 			while (input != null) {		
-				CalculatorProxy	calculatorProxy = (CalculatorProxy) namingService.lookup("Calculator");
+				
 				
 				System.out.println("Type 1-4 for your desired operation:");
 				System.out.println("1. Add");
@@ -43,7 +45,7 @@ public class CalculatorClient {
 				}
 				
 				System.out.println("Type your first operand: ");
-				a = Float.parseFloat(in.readLine());
+				a = Float.parseFloat(in.readLine());				
 				
 				System.out.println("Type your second operand: ");
 				b = Float.parseFloat(in.readLine());				

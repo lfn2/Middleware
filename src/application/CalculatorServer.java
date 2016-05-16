@@ -18,7 +18,7 @@ public class CalculatorServer {
 		
 		CalculatorProxy calculator = new CalculatorProxy(InetAddress.getLocalHost().getHostName(), DEFAULT_PORT);		
 		NamingProxy namingService = new NamingProxy(NAMING_SERVICE_HOST, NAMING_SERVICE_PORT);
-		namingService.bind("Calculator", calculator);
+		namingService.bind(calculator.getObjectId(), calculator);
 		
 		invoker.invoke(port);
 	}

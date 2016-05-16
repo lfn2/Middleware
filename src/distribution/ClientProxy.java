@@ -7,12 +7,12 @@ public abstract class ClientProxy implements Serializable {
 	
 	protected String hostName;
 	protected int port;
-	protected String remoteObject;
+	protected String objectId;
 	
 	public ClientProxy(String hostName, int port, String remoteObject) {
 		this.hostName = hostName;
 		this.port = port;
-		this.remoteObject = remoteObject;
+		this.objectId = remoteObject;
 	}
 	
 	public String getHostName() {
@@ -23,8 +23,8 @@ public abstract class ClientProxy implements Serializable {
 		return this.port;
 	}
 	
-	public String getRemoteObject() {
-		return this.remoteObject;
+	public String getObjectId() {
+		return this.objectId;
 	}
 	
 }
