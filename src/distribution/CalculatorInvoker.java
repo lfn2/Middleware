@@ -6,16 +6,18 @@ import infrastructure.ServerRequestHandler;
 
 public class CalculatorInvoker {
 
+	private ServerRequestHandler requestHandler;
+
 	public void invoke(int port) throws IOException, ClassNotFoundException {
-		ServerRequestHandler requestHandler = new ServerRequestHandler(port);
+		this.requestHandler = new ServerRequestHandler(port);
 
 		Calculator calculator = new Calculator();
 		float result = 0;
 
-		System.out.println("EchoInvoker running");
+		System.out.println("CalculatorInvoker running");
 
 		while (true) {
-			Message message = (Message) Marshaller.unmarshall(requestHandler.receive());
+			Message message = (Message) Marshaller.unmarshall(this.requestHandler.receive());
 
 			switch(message.getOperation()) {
 			case "add":
