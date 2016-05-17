@@ -15,22 +15,24 @@ public class NamingInvoker {
 		this.requestHandler = new ServerRequestHandler(port);
 		
 		NamingImpl naming = new NamingImpl();
-		Object response = null;
+		Object response;
 		
 		while (true) {
 			Message message = (Message) Marshaller.unmarshall(this.requestHandler.receive());
+			response = null;
 			
 			switch (message.getOperation()) {
 			case "bind":
-				response = naming.bind((String) message.getParameters().get(0), (ClientProxy) message.getParameters().get(1));
+				naming.bind((String) message.getParameters().get(0), (ClientProxy) message.getParameters().get(1));
 				break;
 			case "lookup":
 				response = naming.lookup((String) message.getParameters().get(0));
 				break;
 			case "list":
 				response = naming.list();
+				
 				break;
-			}
+			}	
 			
 			requestHandler.send(Marshaller.marshall(response));
 		}

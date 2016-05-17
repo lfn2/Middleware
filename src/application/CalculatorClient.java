@@ -9,10 +9,11 @@ import distribution.CalculatorProxy;
 
 public class CalculatorClient {
 
-	public static final int DEFAULT_PORT = 80;
+	public static final int DEFAULT_PORT = 8080;
 	public static final String DEFAULT_HOSTNAME = "localhost";
 	private static final String NAMING_SERVICE_HOST = "localhost";
 	private static final int NAMING_SERVICE_PORT = 1313;
+	private static final String APPLICATION_NAME = "Calculator";
 	
 	public static void main(String[] args) throws UnknownHostException, ClassNotFoundException, IOException {
 		String hostname = args.length == 2 ? args[0] : DEFAULT_HOSTNAME;
@@ -21,9 +22,10 @@ public class CalculatorClient {
 		float a, b, result = 0;
 		
 		NamingProxy namingService = new NamingProxy(NAMING_SERVICE_HOST, NAMING_SERVICE_PORT);			
-		CalculatorProxy	calculatorProxy = (CalculatorProxy) namingService.lookup("Calculator");
+		CalculatorProxy	calculatorProxy = (CalculatorProxy) namingService.lookup(APPLICATION_NAME);
 		
 		System.out.println("Welcome to Middleware Calculator!");
+		System.out.println("Using calculator " + calculatorProxy.getObjectId());
 		
 		try (			
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));

@@ -26,7 +26,8 @@ public class CalculatorServer {
 		
 		CalculatorProxy calculator;
 		for (int i = 0; i < OBJECTS_QUANTITY; i++) {
-			calculator = new CalculatorProxy(InetAddress.getLocalHost().getHostName(), port, i);		
+			calculator = new CalculatorProxy(InetAddress.getLocalHost().getHostName(), port, i);
+			calculators.add(calculator);
 			namingService.bind(APPLICATION_NAME, calculator);
 		}
 		

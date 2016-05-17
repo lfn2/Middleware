@@ -13,8 +13,8 @@ public class NamingImpl implements INaming {
 	}
 
 	@Override
-	public boolean bind(String serviceName, ClientProxy clientProxy) {
-		return this.namingRepository.addNamingRecord(serviceName, clientProxy);
+	public void bind(String serviceName, ClientProxy clientProxy) {
+		this.namingRepository.addNamingRecord(serviceName, clientProxy);
 	}
 
 	@Override

@@ -13,7 +13,7 @@ public interface INaming {
 	 * @return boolean indicating if the service was bound.
 	 * @throws Throwable 
 	 */
-	public boolean bind(String serviceName, ClientProxy clientProxy) throws Throwable;
+	public void bind(String serviceName, ClientProxy clientProxy) throws Throwable;
 	
 	/**
 	 * Searches for a service in the naming service.

@@ -25,7 +25,8 @@ public class CalculatorInvoker {
 		
 		while (true) {
 			Message message = (Message) Marshaller.unmarshall(this.requestHandler.receive());			
-			calculator = map.get(message.getObjectId());		
+			calculator = map.get(message.getObjectId());	
+			System.out.println("Using calculator " + message.getObjectId());
 			
 			switch(message.getOperation()) {
 			case "add":

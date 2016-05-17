@@ -19,8 +19,8 @@ public class NamingProxy extends ClientProxy implements INaming{
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public boolean bind(String serviceName, ClientProxy clientProxy) throws UnknownHostException, ClassNotFoundException, IOException {
-		return (boolean) requestor.invoke(this.hostName, this.port, this.objectId, "bind", serviceName, clientProxy);
+	public void bind(String serviceName, ClientProxy clientProxy) throws UnknownHostException, ClassNotFoundException, IOException {
+		requestor.invoke(this.hostName, this.port, this.objectId, "bind", serviceName, clientProxy);
 	}
 
 	@Override
