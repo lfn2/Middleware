@@ -29,8 +29,7 @@ public class NamingInvoker {
 				response = naming.lookup((String) message.getParameters().get(0));
 				break;
 			case "list":
-				response = naming.list();
-				
+				response = naming.list();				
 				break;
 			}	
 			

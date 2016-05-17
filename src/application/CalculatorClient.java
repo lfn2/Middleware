@@ -8,16 +8,16 @@ import commonServices.naming.NamingProxy;
 import distribution.CalculatorProxy;
 
 public class CalculatorClient {
-
-	public static final int DEFAULT_PORT = 8080;
+	
 	public static final String DEFAULT_HOSTNAME = "localhost";
+	public static final int DEFAULT_PORT = 8080;
+	
 	private static final String NAMING_SERVICE_HOST = "localhost";
 	private static final int NAMING_SERVICE_PORT = 1313;
+	
 	private static final String APPLICATION_NAME = "Calculator";
 	
 	public static void main(String[] args) throws UnknownHostException, ClassNotFoundException, IOException {
-		String hostname = args.length == 2 ? args[0] : DEFAULT_HOSTNAME;
-		int port = args.length == 2 ? Integer.parseInt(args[1]) : DEFAULT_PORT;
 		String input = "";
 		float a, b, result = 0;
 		
@@ -30,9 +30,7 @@ public class CalculatorClient {
 		try (			
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		) {
-			while (input != null) {		
-				
-				
+			while (input != null) {						
 				System.out.println("Type 1-4 for your desired operation:");
 				System.out.println("1. Add");
 				System.out.println("2. Sub");
@@ -80,7 +78,7 @@ public class CalculatorClient {
 			
 			
 		} catch (IOException e) {
-			System.out.println("Não foi possível se conectar  ao servidor " +hostname+ " na porta " +port+ ".");
+			System.out.println("Não foi possível se conectar  ao servidor " +DEFAULT_HOSTNAME+ " na porta " +DEFAULT_PORT+ ".");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}

@@ -7,7 +7,7 @@ import application.calculator.ICalculator;
 
 public class CalculatorProxy extends ClientProxy implements ICalculator {
 	
-	private static final long serialVersionUID = 3790118147520601326L;
+	private static final long serialVersionUID = 3790118147520601326L;	
 	
 	private Requestor requestor;
 	

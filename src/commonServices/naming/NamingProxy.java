@@ -7,7 +7,7 @@ import java.util.Set;
 import distribution.ClientProxy;
 import distribution.Requestor;
 
-public class NamingProxy extends ClientProxy implements INaming{
+public class NamingProxy extends ClientProxy implements INaming{	
 	
 	private Requestor requestor;
 	
@@ -20,18 +20,18 @@ public class NamingProxy extends ClientProxy implements INaming{
 
 	@Override
 	public void bind(String serviceName, ClientProxy clientProxy) throws UnknownHostException, ClassNotFoundException, IOException {
-		requestor.invoke(this.hostName, this.port, this.objectId, "bind", serviceName, clientProxy);
+		this.requestor.invoke(this.hostName, this.port, this.objectId, "bind", serviceName, clientProxy);
 	}
 
 	@Override
 	public ClientProxy lookup(String serviceName) throws UnknownHostException, ClassNotFoundException, IOException {
-		return (ClientProxy) requestor.invoke(this.hostName, this.port, this.objectId, "lookup", serviceName);
+		return (ClientProxy) this.requestor.invoke(this.hostName, this.port, this.objectId, "lookup", serviceName);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public Set<String> list() throws UnknownHostException, ClassNotFoundException, IOException {
-		return (Set<String>) requestor.invoke(this.hostName, this.port, this.objectId, "lookup");
+		return (Set<String>) this.requestor.invoke(this.hostName, this.port, this.objectId, "lookup");
 	}
 
 }
