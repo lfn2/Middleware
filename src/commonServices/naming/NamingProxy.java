@@ -9,11 +9,10 @@ import distribution.Requestor;
 
 public class NamingProxy extends ClientProxy implements INaming{
 	
-	private static final String OBJECT_ID = "NamingService";
 	private Requestor requestor;
 	
 	public NamingProxy(String hostName, int port) {
-		super(hostName, port, OBJECT_ID);
+		super(hostName, port, 0);
 		this.requestor = new Requestor();
 	}
 

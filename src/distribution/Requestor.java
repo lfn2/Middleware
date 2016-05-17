@@ -12,9 +12,9 @@ public class Requestor implements Serializable {
 	
 	private ClientRequestHandler requestHandler;
 
-	public Object invoke(String hostName, int port, String remoteObject, String operation, Object... parameters) throws UnknownHostException, IOException, ClassNotFoundException {
+	public Object invoke(String hostName, int port, int objectId, String operation, Object... parameters) throws UnknownHostException, IOException, ClassNotFoundException {
 		requestHandler = new ClientRequestHandler(hostName, port);			
-		Message message = new Message(remoteObject, operation, parameters);		
+		Message message = new Message(objectId, operation, parameters);		
 		
 		return Marshaller.unmarshall(requestHandler.sendWithResponse(Marshaller.marshall(message)));
 	}

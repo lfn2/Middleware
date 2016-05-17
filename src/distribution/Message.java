@@ -6,13 +6,13 @@ import java.util.ArrayList;
 public class Message implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	private String remoteObject;
+	private int objectId;
 	private String operation;
 	private ArrayList<Object> parameters;
 	private Object result;
 	
-	public Message(String remoteObject, String operation, Object... parameters) {
-		this.remoteObject = remoteObject;
+	public Message(int remoteObject, String operation, Object... parameters) {
+		this.objectId = remoteObject;
 		this.operation = operation;
 		
 		this.parameters = new ArrayList<Object>();
@@ -21,19 +21,19 @@ public class Message implements Serializable{
 	}
 
 	public String getOperation() {
-		return operation;
+		return this.operation;
 	}
 
 	public ArrayList<Object> getParameters() {
-		return parameters;
+		return this.parameters;
 	}
 
-	public String getRemoteObject() {
-		return remoteObject;
+	public int getObjectId() {
+		return this.objectId;
 	}
 
 	public Object getResult() {
-		return result;
+		return this.result;
 	}
 
 	public void setResult(Object result) {

@@ -9,11 +9,10 @@ public class CalculatorProxy extends ClientProxy implements ICalculator {
 	
 	private static final long serialVersionUID = 3790118147520601326L;
 	
-	private final static String OBJECT_ID = "Calculator";
 	private Requestor requestor;
 	
-	public CalculatorProxy(String hostName, int port) {		
-		super(hostName, port, OBJECT_ID);
+	public CalculatorProxy(String hostName, int port, int objectId) {		
+		super(hostName, port, objectId);
 		this.requestor = new Requestor();
 	}	
 
