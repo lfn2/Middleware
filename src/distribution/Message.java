@@ -9,7 +9,6 @@ public class Message implements Serializable{
 	private int objectId;
 	private String operation;
 	private ArrayList<Object> parameters;
-	private Object result;
 	
 	public Message(int remoteObject, String operation, Object... parameters) {
 		this.objectId = remoteObject;
@@ -31,12 +30,5 @@ public class Message implements Serializable{
 	public int getObjectId() {
 		return this.objectId;
 	}
-
-	public Object getResult() {
-		return this.result;
-	}
-
-	public void setResult(Object result) {
-		this.result = result;
-	}
+	
 }

@@ -18,8 +18,7 @@ public class CalculatorInvoker {
 		
 		while (true) {
 			Message message = (Message) Marshaller.unmarshall(this.requestHandler.receive());			
-			calculator = calculators.get(message.getObjectId());	
-			System.out.println("Using calculator " + message.getObjectId());
+			calculator = calculators.get(message.getObjectId());
 			
 			switch(message.getOperation()) {
 			case "add":
@@ -42,5 +41,5 @@ public class CalculatorInvoker {
 			requestHandler.send(Marshaller.marshall(result));
 		}
 	}
-
+	
 }

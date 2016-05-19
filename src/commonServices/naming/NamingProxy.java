@@ -9,14 +9,14 @@ import distribution.Requestor;
 
 public class NamingProxy extends ClientProxy implements INaming{	
 	
+	private static final long serialVersionUID = 1L;
+	
 	private Requestor requestor;
 	
 	public NamingProxy(String hostName, int port) {
 		super(hostName, port, 0);
 		this.requestor = new Requestor();
-	}
-
-	private static final long serialVersionUID = 1L;
+	}	
 
 	@Override
 	public void bind(String serviceName, ClientProxy clientProxy) throws UnknownHostException, ClassNotFoundException, IOException {

@@ -18,14 +18,13 @@ public class CalculatorClient {
 	private static final String APPLICATION_NAME = "Calculator";
 	
 	public static void main(String[] args) throws UnknownHostException, ClassNotFoundException, IOException {
-		String input = "";
+		String input = new String();
 		float a, b, result = 0;
 		
 		NamingProxy namingService = new NamingProxy(NAMING_SERVICE_HOST, NAMING_SERVICE_PORT);			
 		CalculatorProxy	calculatorProxy = (CalculatorProxy) namingService.lookup(APPLICATION_NAME);
 		
 		System.out.println("Welcome to Middleware Calculator!");
-		System.out.println("Using calculator " + calculatorProxy.getObjectId());
 		
 		try (			
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -74,15 +73,12 @@ public class CalculatorClient {
 					System.out.println("Result: " +result);
 					System.out.println();
 				}				
-			}
-			
-			
+			}			
 		} catch (IOException e) {
 			System.out.println("Não foi possível se conectar  ao servidor " +DEFAULT_HOSTNAME+ " na porta " +DEFAULT_PORT+ ".");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 }
